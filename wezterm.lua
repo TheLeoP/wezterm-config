@@ -10,5 +10,6 @@ end)
 
 config.default_prog = { "pwsh" }
 config.color_scheme = "Gruvbox Dark (Gogh)"
+config.prefer_egl = true
 
 return config
