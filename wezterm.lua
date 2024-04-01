@@ -15,6 +15,9 @@ if is_windows() then
 else
   config.default_prog = { "zsh" }
 end
+
+config.use_fancy_tab_bar = false
+config.hide_tab_bar_if_only_one_tab = false
 config.color_scheme = "Gruvbox Dark (Gogh)"
 config.prefer_egl = true
 
