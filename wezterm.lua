@@ -1,4 +1,5 @@
 local wezterm = require "wezterm"
+local act = wezterm.action
 local config = wezterm.config_builder()
 
 local mux = wezterm.mux
@@ -12,6 +13,16 @@ end)
 
 if is_windows() then
   config.default_prog = { "pwsh" }
+  config.keys = {
+    {
+      key = " ",
+      mods = "CTRL",
+      action = act.SendKey {
+        key = " ",
+        mods = "CTRL",
+      },
+    },
+  }
 else
   config.default_prog = { "zsh" }
 end
