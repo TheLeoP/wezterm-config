@@ -31,5 +31,7 @@ config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = false
 config.color_scheme = "Gruvbox Dark (Gogh)"
 config.prefer_egl = true
+config.font = wezterm.font "CaskaydiaCove Nerd Font Mono"
+config.font_size = 13
 
 return config
