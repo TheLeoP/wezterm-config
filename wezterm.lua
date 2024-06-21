@@ -1,4 +1,3 @@
----@type Wezterm
 local wezterm = require "wezterm"
 local act = wezterm.action
 local config = wezterm.config_builder()
@@ -32,7 +31,11 @@ config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = false
 config.color_scheme = "Gruvbox Dark (Gogh)"
 config.prefer_egl = true
-config.font = wezterm.font "CaskaydiaCove Nerd Font Mono"
+config.font = wezterm.font {
+  family = "CaskaydiaCove Nerd Font Mono",
+  -- disable ligatures
+  harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+}
 config.font_size = 13
 
 return config
