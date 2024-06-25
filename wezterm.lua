@@ -81,7 +81,10 @@ else
   config.default_prog = { "zsh" }
 end
 
+config.default_cursor_style = "SteadyUnderline"
+config.scrollback_lines = 10000
 config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = false
 config.color_scheme = "Gruvbox Dark (Gogh)"
 config.prefer_egl = true
@@ -91,5 +94,7 @@ config.font = wezterm.font {
   harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 }
 config.font_size = 13
+
+config.command_palette_font_size = 16
 
 return config
