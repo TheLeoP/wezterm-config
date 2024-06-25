@@ -24,45 +24,6 @@ local smart_split = wezterm.action_callback(function(window, pane)
   end
 end)
 
-config.leader = { key = "w", mods = "CTRL", timeout_milliseconds = 500 }
-
----@param mods string
----@param key string
----@param dir "Right" | "Left" | "Up" | "Down"
-local function split_nav(mods, key, dir)
-  local event = "SplitNav_move" .. "_" .. dir
-  wezterm.on(event, function(win, pane)
-    if is_nvim(pane) then
-      -- pass the keys through to vim/nvim
-      win:perform_action(
-        act.Multiple {
-          act.SendKey { mods = "CTRL", key = "w" },
-          act.SendKey { mods = mods, key = key },
-        },
-        pane
-      )
-      return
-    end
-    local panes = pane:tab():panes_with_info()
-    local is_zoomed = false
-    for _, p in ipairs(panes) do
-      if p.is_zoomed then is_zoomed = true end
-    end
-    wezterm.log_info("is_zoomed: " .. tostring(is_zoomed))
-    if is_zoomed then
-      dir = dir == "Up" or dir == "Right" and "Next" or "Prev"
-      wezterm.log_info("dir: " .. dir)
-    end
-    win:perform_action({ ActivatePaneDirection = dir }, pane)
-    win:perform_action({ SetPaneZoomState = is_zoomed }, pane)
-  end)
-  return {
-    key = key,
-    mods = "LEADER|" .. mods,
-    action = wezterm.action.EmitEvent(event),
-  }
-end
-
 local mod = "SHIFT|CTRL"
 config.disable_default_key_bindings = true
 config.keys = {
@@ -104,18 +65,10 @@ config.keys = {
   { mods = mod, key = "z", action = act.TogglePaneZoomState },
   { mods = mod, key = "p", action = act.ActivateCommandPalette },
   { mods = mod, key = "d", action = act.ShowDebugOverlay },
-  split_nav("CTRL", "h", "Left"),
-  split_nav("CTRL", "j", "Down"),
-  split_nav("CTRL", "k", "Up"),
-  split_nav("CTRL", "l", "Right"),
-  split_nav("", "h", "Left"),
-  split_nav("", "j", "Down"),
-  split_nav("", "k", "Up"),
-  split_nav("", "l", "Right"),
 }
 
 if is_windows() then
-  config.default_prog = { "" }
+  config.default_prog = { "pwsh" }
   table.insert(config.keys, {
     key = " ",
     mods = "CTRL",
