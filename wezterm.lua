@@ -68,7 +68,7 @@ config.keys = {
 }
 
 if is_windows() then
-  config.default_prog = { "pwsh" }
+  config.default_prog = { "pwsh", "-NoLogo" }
   table.insert(config.keys, {
     key = " ",
     mods = "CTRL",
