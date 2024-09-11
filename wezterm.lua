@@ -65,16 +65,32 @@ config.keys = {
   { mods = mod, key = "z", action = act.TogglePaneZoomState },
   { mods = mod, key = "p", action = act.ActivateCommandPalette },
   { mods = mod, key = "d", action = act.ShowDebugOverlay },
+  {
+    mods = "CTRL",
+    key = "Backspace",
+    action = act.SendKey {
+      mods = "CTRL",
+      key = "Backspace",
+    },
+  },
+  {
+    mods = "CTRL",
+    key = "Enter",
+    action = act.SendKey {
+      mods = "CTRL",
+      key = "Enter",
+    },
+  },
 }
 
 if is_windows() then
   config.default_prog = { "pwsh", "-NoLogo" }
   table.insert(config.keys, {
-    key = " ",
     mods = "CTRL",
+    key = " ",
     action = act.SendKey {
-      key = " ",
       mods = "CTRL",
+      key = " ",
     },
   })
 else
