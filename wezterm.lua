@@ -97,6 +97,26 @@ else
   config.default_prog = { "zsh" }
 end
 
+-- use _ like ^
+local copy_mode = wezterm.gui.default_key_tables().copy_mode
+table.insert(copy_mode, {
+  key = "_",
+  mods = "SHIFT",
+  action = act.CopyMode "MoveToStartOfLineContent",
+})
+config.key_tables = {
+  copy_mode = copy_mode,
+}
+
+-- enable to check key events in stderr
+-- wezterm needs to be openen from another terminal
+-- config.debug_key_events = true
+
+-- add support for Windows paths
+config.quick_select_patterns = {
+  "(?:[.\\w\\-@~:]+)?(?:\\\\+[.\\w\\-@]+)+",
+}
+
 config.default_cursor_style = "SteadyUnderline"
 config.scrollback_lines = 10000
 config.use_fancy_tab_bar = false
