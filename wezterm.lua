@@ -117,6 +117,8 @@ config.quick_select_patterns = {
   "(?:[.\\w\\-@~:]+)?(?:\\\\+[.\\w\\-@]+)+",
 }
 
+config.term = "wezterm"
+
 config.force_reverse_video_cursor = true
 config.default_cursor_style = "SteadyUnderline"
 config.scrollback_lines = 10000
