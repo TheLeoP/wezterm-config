@@ -120,7 +120,7 @@ config.quick_select_patterns = {
 config.term = "wezterm"
 
 config.force_reverse_video_cursor = true
-config.default_cursor_style = "SteadyUnderline"
+config.default_cursor_style = "SteadyBar"
 config.scrollback_lines = 10000
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
