@@ -132,7 +132,7 @@ config.font = wezterm.font {
   -- disable ligatures
   harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 }
-config.font_size = 15
+config.font_size = 19
 
 config.command_palette_font_size = 16
 
