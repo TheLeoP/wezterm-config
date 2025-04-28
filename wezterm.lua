@@ -117,7 +117,7 @@ config.quick_select_patterns = {
   "(?:[.\\w\\-@~:]+)?(?:\\\\+[.\\w\\-@]+)+",
 }
 
-config.term = "wezterm"
+if not is_windows then config.term = "wezterm" end
 
 config.force_reverse_video_cursor = true
 config.default_cursor_style = "SteadyBar"
@@ -132,7 +132,11 @@ config.font = wezterm.font {
   -- disable ligatures
   harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 }
-config.font_size = 19
+if not is_windows then
+  config.font_size = 19
+else
+  config.font_size = 18
+end
 
 config.command_palette_font_size = 16
 
