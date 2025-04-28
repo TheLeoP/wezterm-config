@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 
 local mux = wezterm.mux
 
-local is_windows = function() return wezterm.target_triple:find "windows" end
+local is_windows = wezterm.target_triple:find "windows"
 
 local function is_nvim(pane)
   return pane:get_user_vars().IS_NVIM == "true" or pane:get_foreground_process_name():find "n?vim"
@@ -83,7 +83,7 @@ config.keys = {
   },
 }
 
-if is_windows() then
+if is_windows then
   config.default_prog = { "pwsh", "-NoLogo" }
   table.insert(config.keys, {
     mods = "CTRL",
