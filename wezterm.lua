@@ -6,10 +6,6 @@ local mux = wezterm.mux
 
 local is_windows = wezterm.target_triple:find "windows"
 
-local function is_nvim(pane)
-  return pane:get_user_vars().IS_NVIM == "true" or pane:get_foreground_process_name():find "n?vim"
-end
-
 wezterm.on("gui-startup", function()
   local tab, pane, window = mux.spawn_window {}
   window:gui_window():maximize()
