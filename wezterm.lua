@@ -130,7 +130,7 @@ config.font = wezterm.font {
 if not is_windows then
   config.font_size = 19
 else
-  config.font_size = 14
+  config.font_size = 13
 end
 
 config.command_palette_font_size = 16
